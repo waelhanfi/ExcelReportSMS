@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+   
+      
+      
+   
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Etats de Trafic </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="template/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="template/assets/css/noscript.css" /></noscript>
+                <style>
+                    .loader {
+                      border: 16px solid #f3f3f3;
+                      border-radius: 50%;
+                      border-top: 16px solid #FFCC00;
+                      width: 120px;
+                      height: 120px;
+                      -webkit-animation: spin 2s linear infinite; /* Safari */
+                      animation: spin 2s linear infinite;
+                    }
+
+                    /* Safari */
+                    @-webkit-keyframes spin {
+                      0% { -webkit-transform: rotate(0deg); }
+                      100% { -webkit-transform: rotate(360deg); }
+                    }
+
+                    @keyframes spin {
+                      0% { transform: rotate(0deg); }
+                      100% { transform: rotate(360deg); }
+                    }
+                </style>
+    </h:head>
+    <h:body class="is-preload" >
+		<div id="page-wrapper">
+                    
+
+			<!-- Header -->
+				<header id="header">
+					<!--<h1 id="logo"><a href="index.html">Landed</a></h1>-->
+                                        <h1 id="logo"><img style="margin-left:1px;width: 55px;height: 50px;" src="1.GIF" alt=""></img></h1>
+                                        
+					<nav id="nav">
+						<ul>
+							<li><a href="home.html">Accueil</a></li>
+							<li>
+								<a href="ExtractPage.xhtml">Generer l'etat de trafic</a>
+								
+							</li>
+							<li><a href="TableauRapport.xhtml">Rapport</a></li>
+                                                        <li><a href="PieChartPage.xhtml">Dashboard</a></li>
+							<li><a href="LoginPage.xhtml" class="button primary">Deconnexion</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h2>Génération des états de trafics SMS</h2>
+							
+						</header>
+
+						
+
+						<!-- Form -->
+							<section>
+								<h3>Veuillez entrer l'année et le mois afin de générer des fichiers Excel de trafic SMS</h3>
+                                                                
+                                                                
+								<h:form >
+									<div class="row gtr-uniform gtr-50">
+                                                                            
+										
+										<div class="col-6 col-12-xsmall">
+											<h:selectOneMenu value="#{extractBean.mois}" id="category" required="true">
+                                                                                                <f:selectItem itemValue = "" itemLabel = "Le mois" />
+												<f:selectItem itemValue = "01" itemLabel = "Janvier" /> 
+                                                                                                <f:selectItem itemValue = "02" itemLabel = "Février" /> 
+                                                                                                <f:selectItem itemValue = "03" itemLabel = "Mars" /> 
+                                                                                                <f:selectItem itemValue = "04" itemLabel = "Avril " /> 
+                                                                                                <f:selectItem itemValue = "05" itemLabel = "Mai " /> 
+                                                                                                <f:selectItem itemValue = "06" itemLabel = "Juin " /> 
+                                                                                                <f:selectItem itemValue = "07" itemLabel = "Juillet " /> 
+                                                                                                <f:selectItem itemValue = "08" itemLabel = "Août" /> 
+                                                                                                <f:selectItem itemValue = "09" itemLabel = "Septembre" /> 
+                                                                                                <f:selectItem itemValue = "10" itemLabel = "Octobre" /> 
+                                                                                                <f:selectItem itemValue = "11" itemLabel = "Novembre" /> 
+                                                                                                <f:selectItem itemValue = "12" itemLabel = "Décembre" />
+											</h:selectOneMenu>
+                                                                                    <br></br>
+                                                                                <div class="col-6 col-12-xsmall">
+											
+                                                                                        <h:inputText value="#{extractBean.annee}" id="name" p:placeholder="L'année" required="true"></h:inputText>
+										</div>
+                                                                                <br></br>
+                                                                                <div class="col-6 col-12-xsmall">
+											
+                                                                                     <h:inputText value="#{extractBean.path}" id="path" p:placeholder="Le chemin" required="true"></h:inputText>
+                                                                                        
+										</div>    
+                                                                                     
+                                                                                    
+										</div>
+										
+										
+										<div class="col-12">
+											<ul class="actions">
+												
+                                                                                            <h:commandButton action="#{extractBean.getAllInformation()}"  value="Executer" class="primary" onclick="document.getElementById('loader').style.display='block'" >
+                                                                                                 
+                                                                                            </h:commandButton>
+                                                    												
+											</ul>
+                                                                                    
+										</div>
+                                                                            
+                                                                           
+                                                                            <div class="loader" id="loader" style="display:none"></div>
+                                                                            <br></br>
+                                                                                
+                                                                                
+
+                                                                            
+
+									</div>
+								</h:form>
+                                                            
+							</section>
+
+						
+
+					</div>
+				</div>
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<!--<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>-->
+                                                <li><a href="https://fr.linkedin.com/company/get-wireless" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy;  Tous droits réservés.</li><li>Design: <a href="http://www.getwireless.com.tn/">Get Wireless 2018</a></li>
+					</ul>
+				</footer>
+
+                        
+                
+                                        
+		<!-- Scripts -->
+			<script src="template/assets/js/jquery.min.js"></script>
+			<script src="template/assets/js/jquery.scrolly.min.js"></script>
+			<script src="template/assets/js/jquery.dropotron.min.js"></script>
+			<script src="template/assets/js/jquery.scrollex.min.js"></script>
+			<script src="template/assets/js/browser.min.js"></script>
+			<script src="template/assets/js/breakpoints.min.js"></script>
+			<script src="template/assets/js/util.js"></script>
+			<script src="template/assets/js/main.js"></script>
+            </div>
+
+	</h:body>
+</html>

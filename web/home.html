@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Etats de Trafic Acceuil</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="template/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="template/assets/css/noscript.css" /></noscript>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    </h:head>
+    <h:body class="is-preload" >
+		<div id="page-wrapper">
+                    
+
+			<!-- Header -->
+				<header id="header">
+					<!--<h1 id="logo"><a href="index.html">Landed</a></h1>-->
+                    <h1 id="logo"><img style="margin-left:1px;width: 55px;height: 50px;" src="1.GIF" alt=""></img></h1>
+                                        
+					<nav id="nav">
+						<ul>
+							<li><a href="home.html">Accueil</a></li>
+							<li>
+								<a href="ExtractPage.xhtml">Generer l'etat de trafic</a>
+								
+							</li>
+							<li><a href="elements.html">Elements</a></li>
+							<li><a href="LoginPage.xhtml" class="button primary">Deconnexion</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<div id="main" class="wrapper style1" style="background-image: url(1.jpg)" >
+					<div class="container">
+						<h2 class="w3-center">Etats De Trafic</h2>
+
+							<div class="w3-content w3-display-container">
+							  <img class="mySlides" src="home/images/b11.jpg" style="width:100%"/>
+							  <img class="mySlides" src="home/images/22.jpg" style="width:100%"/>
+							  
+
+							  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+							  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+							</div>
+
+							<script>
+							var slideIndex = 1;
+							showDivs(slideIndex);
+
+							function plusDivs(n) {
+							  showDivs(slideIndex += n);
+							}
+
+							function showDivs(n) {
+							  var i;
+							  var x = document.getElementsByClassName("mySlides");
+							  if (n > x.length) {slideIndex = 1}    
+							  if (n < 1) {slideIndex = x.length}
+							  for (i = 0; i < x.length; i++) {
+								 x[i].style.display = "none";  
+							  }
+							  x[slideIndex-1].style.display = "block";  
+							}
+							</script>
+						
+			</div>
+                    </div>
+                			
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<!--<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>-->
+                                                <li><a href="https://fr.linkedin.com/company/get-wireless" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy;  Tous droits réservés.</li><li>Design: <a href="http://www.getwireless.com.tn/">Get Wireless 2018</a></li>
+					</ul>
+				</footer>
+
+                        
+                                        
+		<!-- Scripts -->
+			<script src="template/assets/js/jquery.min.js"></script>
+			<script src="template/assets/js/jquery.scrolly.min.js"></script>
+			<script src="template/assets/js/jquery.dropotron.min.js"></script>
+			<script src="template/assets/js/jquery.scrollex.min.js"></script>
+			<script src="template/assets/js/browser.min.js"></script>
+			<script src="template/assets/js/breakpoints.min.js"></script>
+			<script src="template/assets/js/util.js"></script>
+			<script src="template/assets/js/main.js"></script>
+            </div>
+
+	</h:body>
+</html>
+

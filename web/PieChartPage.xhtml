@@ -1,0 +1,290 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:head>
+        <title>Etats de Trafic </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="template/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="template/assets/css/noscript.css" /></noscript>
+                <!--Import Google Icon Font-->
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+                <!--Import materialize.css-->
+
+                <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+                <script src="https://cdn.rawgit.com/Dogfalo/materialize/fc44c862/dist/js/materialize.min.js"></script>
+                <script type="text/javascript" src="https://cdn.rawgit.com/pinzon1992/materialize_table_pagination/f9a8478f/js/pagination.js"></script>
+                <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+                <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+                <script type="text/javascript">
+                    // Load the Visualization API and the piechart package.
+                    google.load('visualization', '1.0', {
+                        'packages' : [ 'corechart' ]
+                    });
+
+                    // Set a callback to run when the Google Visualization API is loaded.
+                    google.setOnLoadCallback(drawChartService);
+                    google.setOnLoadCallback(drawChartOperateur);
+                    google.setOnLoadCallback(drawChartSc);
+
+                    // Callback that creates and populates a data table,
+                    // instantiates the pie chart, passes in the data and
+                    // draws it.
+                    function drawChartService() {
+
+                        // Create the data table for sercices.
+
+                        var data = google.visualization.arrayToDataTable([
+                                                                              ['service', 'count'],
+                                                                              <ui:repeat value="#{pieChartBean.pieDataListService}" var="entry">
+                                                                                  [ '#{entry.key}', #{entry.value} ],
+                                                                              </ui:repeat>
+                                                                        ]);
+
+                        // Set chart options
+                        var options = {
+                            'title' : 'Statistiques des Services', //title which will be shown right above the Google Pie Chart
+                            is3D : true, //render Google Pie Chart as 3D
+                            pieSliceText: 'label', //on mouse hover show label or name of the Country
+                            tooltip :  {showColorCode: true}, // whether to display color code for a Country on mouse hover
+                            'width' : 650, //width of the Google Pie Chart
+                            'height' : 500 //height of the Google Pie Chart
+                        };
+
+                        // Instantiate and draw our chart, passing in some options.
+                        var chart = new google.visualization.PieChart(document.getElementById('chart_div_service'));
+                        chart.draw(data, options);
+                    }
+
+                    function drawChartOperateur() {
+
+                        // Create the data table for sercices.
+
+                        var data = google.visualization.arrayToDataTable([
+                                                                              ['operateur', 'count'],
+                                                                              <ui:repeat value="#{pieChartBean.pieDataListOperateur}" var="entry">
+                                                                                  [ '#{entry.key}', #{entry.value} ],
+                                                                              </ui:repeat>
+                                                                        ]);
+
+                        // Set chart options
+                        var options = {
+                            'title' : 'Statistiques des Operateurs', //title which will be shown right above the Google Pie Chart
+                            is3D : true, //render Google Pie Chart as 3D
+                            pieSliceText: 'label', //on mouse hover show label or name of the Country
+                            tooltip :  {showColorCode: true}, // whether to display color code for a Country on mouse hover
+                            'width' : 650, //width of the Google Pie Chart
+                            'height' : 500 //height of the Google Pie Chart
+                        };
+
+                        // Instantiate and draw our chart, passing in some options.
+                        var chart = new google.visualization.PieChart(document.getElementById('chart_div_operateur'));
+                        chart.draw(data, options);
+                    }
+
+                    function drawChartSc() {
+
+                        // Create the data table for sercices.
+
+                        var data = google.visualization.arrayToDataTable([
+                                                                              ['shortcode', 'count'],
+                                                                              <ui:repeat value="#{pieChartBean.pieDataListSc}" var="entry">
+                                                                                  [ '#{entry.key}', #{entry.value} ],
+                                                                              </ui:repeat>
+                                                                        ]);
+
+                        // Set chart options
+                        var options = {
+                            'title' : 'Statistiques des Short codes', //title which will be shown right above the Google Pie Chart
+                            is3D : true, //render Google Pie Chart as 3D
+                            pieSliceText: 'label', //on mouse hover show label or name of the Country
+                            tooltip :  {showColorCode: true}, // whether to display color code for a Country on mouse hover
+                            'width' : 1250, //width of the Google Pie Chart
+                            'height' : 500 //height of the Google Pie Chart
+                            
+                        };
+
+                        // Instantiate and draw our chart, passing in some options.
+                        var chart = new google.visualization.PieChart(document.getElementById('chart_div_sc'));
+                        chart.draw(data, options);
+                    }
+            </script>
+            <style>
+                    .loader {
+                      border: 16px solid #f3f3f3;
+                      border-radius: 50%;
+                      border-top: 16px solid #FFCC00;
+                      width: 120px;
+                      height: 120px;
+                      -webkit-animation: spin 2s linear infinite; /* Safari */
+                      animation: spin 2s linear infinite;
+                    }
+
+                    /* Safari */
+                    @-webkit-keyframes spin {
+                      0% { -webkit-transform: rotate(0deg); }
+                      100% { -webkit-transform: rotate(360deg); }
+                    }
+
+                    @keyframes spin {
+                      0% { transform: rotate(0deg); }
+                      100% { transform: rotate(360deg); }
+                    }
+                </style>
+    </h:head>
+    <h:body class="is-preload" >
+		<div id="page-wrapper">
+                    
+
+			<!-- Header -->
+				<header id="header">
+					<!--<h1 id="logo"><a href="index.html">Landed</a></h1>-->
+                                        <h1 id="logo"><img style="margin-left:1px;width: 55px;height: 50px;" src="1.GIF" alt=""></img></h1>
+                                        
+					<nav id="nav">
+						<ul>
+							<li><a href="home.html">Accueil</a></li>
+							<li><a href="ExtractPage.xhtml">Generer l'etat de trafic</a></li>
+							<li><a href="TableauRapport.xhtml">Rapport</a></li>
+                                                        <li><a href="PieChartPage.xhtml">Dashboard</a></li>
+							<li><a href="LoginPage.xhtml" class="button primary">Deconnexion</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h2>Dashboard</h2>
+							
+						</header>
+
+						
+
+						<!-- Form -->
+							<section>
+								
+								<h:form>
+									<div class="row gtr-uniform gtr-50">
+										
+										<div class="col-6 col-12-xsmall">
+											
+                                                                                <table>
+                                                                                    <div class="col-6 col-12-xsmall">
+                                                                                                <tr>
+                                                                                                    <td>La date de début :</td><td> <h:inputText a:type="date" value="#{pieChartBean.startDate}" /></td>
+                                                                                                </tr>
+
+                                                                                    </div>
+                                                                                    
+                                                                                    <tr></tr>
+                                                                                    <div class="col-6 col-12-xsmall">
+					
+                                                                                        <tr>
+                                                                                            <td>La date de fin :</td><td> <h:inputText a:type="date" value="#{pieChartBean.endDate}" /></td>
+                                                                                        </tr>
+                                                                                    </div>
+                                                                                </table>
+                                                                                    <ol>
+                                                                                        <li> start: #{pieChartBean.startDate}</li>
+                                                                                        <li> end: #{pieChartBean.endDate}</li>
+                                                                                        
+
+                                                                                    </ol>
+										   
+                                                                                    
+                                                                                    
+										</div>
+										
+										
+										<div class="col-12">
+											<ul class="actions">
+												
+                                                                                            <h:commandButton value="Submit" class="primary" onclick="document.getElementById('loader').style.display='block'"  />
+                                                                                            
+                                                    												
+											</ul>
+                                                                                    
+                                                                                    <div class="loader" id="loader" style="display:none"></div>
+										</div>
+                                                                            <br></br>
+                                                                                
+
+									</div>
+								</h:form>
+
+							</section>
+                                                        <section>
+								
+                                                               
+								<h:form >
+									<div class="row gtr-uniform gtr-50">
+                                                                            <div style="width: 600px;">
+                                                                                <div id="chart_div_operateur"></div>
+                                                                            
+                                                                            </div>
+                                                                           
+                                                                            
+                                                                        
+                                                                            <div style="width: 600px;">
+                                                                                <div id="chart_div_service"></div>
+                                                                            </div>
+                                                                        </div>     
+
+                                                                            
+                                                                        <div class="row gtr-uniform gtr-50">                                                        
+                                                                            <div style="width: 600px;">
+                                                                                <div id="chart_div_sc"></div>
+                                                                            </div>
+                                                                        </div>
+                           
+								</h:form>
+
+							</section>
+                                                       
+                                                   
+
+					</div>
+				</div>
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<!--<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>-->
+                                                <li><a href="https://fr.linkedin.com/company/get-wireless" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy;  Tous droits réservés.</li><li>Design: <a href="http://www.getwireless.com.tn/">Get Wireless 2018</a></li>
+					</ul>
+				</footer>
+
+                        
+                
+                                        
+		<!-- Scripts -->
+			<script src="template/assets/js/jquery.min.js"></script>
+			<script src="template/assets/js/jquery.scrolly.min.js"></script>
+			<script src="template/assets/js/jquery.dropotron.min.js"></script>
+			<script src="template/assets/js/jquery.scrollex.min.js"></script>
+			<script src="template/assets/js/browser.min.js"></script>
+			<script src="template/assets/js/breakpoints.min.js"></script>
+			<script src="template/assets/js/util.js"></script>
+			<script src="template/assets/js/main.js"></script>
+            </div>
+        
+        
+
+	</h:body>
+</html>
